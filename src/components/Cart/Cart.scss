@@ -1,0 +1,89 @@
+@use ".././../styles/variables" as v;
+
+.disable {
+  cursor: wait;
+}
+
+.card {
+  display: flex;
+  padding-top: 160px;
+  padding-bottom: 160px;
+  justify-content: space-between;
+  .card-content {
+    width: 70%;
+    .card-title {
+      font-size: 1.5625rem;
+      padding-bottom: 20px;
+    }
+    table {
+      width: 90%;
+      border: none;
+      border-collapse: collapse;
+      border-radius: 5px;
+      overflow: hidden;
+      .table-header {
+        background-color: v.$primary-color1;
+        border: 2px solid v.$primary-color1;
+        height: 50px;
+      }
+
+      .table-row {
+        text-align: center;
+        height: 70px;
+        border: 2px solid v.$primary-color1;
+        .quantity {
+          display: flex;
+          justify-content: space-evenly;
+        }
+        .btn-delete {
+          width: 35px;
+        }
+        .btn-delete:hover {
+          border: 1px solid v.$primary-color;
+        }
+        input {
+          width: 35px;
+          border: none;
+        }
+      }
+    }
+  }
+  .card-totals {
+    width: 30%;
+    padding-top: 20px;
+    .card-header {
+      background-color: v.$primary-color;
+      height: 50px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      text-align: center;
+      h3 {
+        color: v.$white-color;
+        font-size: 1.4375rem;
+        line-height: 45px;
+      }
+    }
+    .card-items {
+      height: 40px;
+      border: 1px solid v.$primary-color;
+      display: flex;
+      justify-content: space-between;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      p {
+        padding: 10px 20px 10px 20px;
+        color: v.$grey-text-color1;
+        font-weight: bold;
+      }
+    }
+    .btn-checkout {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}

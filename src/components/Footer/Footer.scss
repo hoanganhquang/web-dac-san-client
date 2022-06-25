@@ -1,0 +1,64 @@
+@use "../../styles/variables" as v;
+
+footer {
+  padding-top: 80px;
+  padding-bottom: 10px;
+
+  .container {
+    .footer-main {
+      .solutions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+
+        .solution {
+          h5 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 145%;
+            color: v.$black-text-color;
+            letter-spacing: -0.0033em;
+            margin-bottom: 15px;
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            gap: 8px 0;
+
+            li {
+              a {
+                font-weight: 400;
+                font-size: 0.938rem;
+                line-height: 160%;
+                letter-spacing: -0.0033em;
+                color: v.$black-text-color1;
+              }
+            }
+          }
+        }
+      }
+
+      .copyright-and-social-media {
+        display: flex;
+        justify-content: space-between;
+
+        .copyright {
+          p {
+            font-weight: 400;
+            font-size: 0.938rem;
+            line-height: 160%;
+            /* or 160% */
+            color: v.$grey-text-color2;
+          }
+        }
+
+        .social-media-icon {
+          display: flex;
+          justify-content: space-between;
+          gap: 0 15px;
+        }
+      }
+    }
+  }
+}

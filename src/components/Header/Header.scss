@@ -1,0 +1,99 @@
+@use "../../styles/variables" as v;
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: all 0.15s linear;
+  background-color: v.$white-color;
+  z-index: 999;
+
+  .container {
+    .header-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: v.$nav-height;
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 0 40px;
+
+        .logoBox {
+          display: flex;
+          align-items: center;
+          .title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 112%;
+            color: v.$primary-color;
+          }
+
+          img {
+            width: 29px;
+          }
+        }
+
+        .menu {
+          display: flex;
+          gap: 0 40px;
+
+          .item {
+            a {
+              font-size: 0.938rem;
+              line-height: 160%;
+              color: v.$black-text-color;
+              cursor: pointer;
+            }
+
+            &--active {
+              a {
+                color: v.$primary-color;
+              }
+            }
+          }
+        }
+      }
+
+      .features {
+        display: flex;
+        align-items: center;
+        gap: 0 30px;
+
+        .img-box {
+          position: relative;
+          cursor: pointer;
+          width: 25px;
+
+          .number {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            align-items: center;
+            background-color: v.$red-color;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            font-weight: 500;
+            font-size: 0.7rem;
+            line-height: 12px;
+            color: #fff;
+            top: 15px;
+            right: -3px;
+          }
+        }
+
+        .primaryBtn {
+          width: 147px;
+          height: 55px;
+        }
+      }
+    }
+  }
+}
+
+.scrollShow {
+  box-shadow: 0 0.5px 5px black;
+}

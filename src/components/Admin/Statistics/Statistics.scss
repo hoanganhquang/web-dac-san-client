@@ -1,0 +1,88 @@
+@use "../../../styles/variables" as v;
+
+.statistics {
+  .calendar-box {
+    display: flex;
+    gap: 0 10px;
+    margin-bottom: 20px;
+
+    select {
+      background-color: v.$white-color;
+      border: 1px solid v.$grey-text-color3;
+      border-radius: 7px;
+      padding: 12px 20px;
+      outline: none;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: v.$primary-color;
+        box-shadow: 0px 5px 40px rgba(18, 21, 26, 0.05);
+      }
+    }
+
+    .react-datepicker__input-container {
+      input {
+        background-color: v.$white-color;
+        border: 1px solid v.$grey-text-color3;
+        border-radius: 7px;
+        padding: 12px 20px;
+        font-weight: bold;
+        font-size: 1rem;
+
+        &:focus {
+          border-color: v.$primary-color;
+          box-shadow: 0px 5px 40px rgba(18, 21, 26, 0.05);
+        }
+      }
+    }
+  }
+
+  .statistics-box {
+    display: flex;
+    justify-content: space-between;
+
+    .item {
+      width: 260px;
+      height: 110px;
+      background-color: v.$white-color;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.507);
+      border-radius: 5px;
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      gap: 0 10px;
+
+      .icon-box {
+        padding: 14px;
+        background-color: v.$primary-color1;
+        border-radius: 50%;
+        svg {
+          height: 22px;
+          color: v.$primary-color;
+        }
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px 0;
+
+        p {
+          &:nth-child(1) {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: v.$black-text-color1;
+
+            span {
+              font-size: 0.7rem;
+            }
+          }
+
+          &:nth-child(2) {
+            color: v.$grey-text-color1;
+          }
+        }
+      }
+    }
+  }
+}

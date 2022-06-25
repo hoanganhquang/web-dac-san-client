@@ -1,0 +1,55 @@
+@use "../../../styles/variables" as v;
+
+.order {
+  .order-modal {
+    .modal-box {
+      width: 600px;
+
+      table {
+        border-radius: 0 !important;
+        margin-top: 0 !important;
+
+        th,
+        td {
+          width: 260px;
+        }
+
+        thead {
+        }
+
+        tbody {
+          tr {
+            background-color: v.$white-color;
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+
+    .secondaryBtn {
+      width: 100px;
+      height: 40px;
+    }
+
+    th,
+    td {
+      width: 210px;
+    }
+
+    thead {
+    }
+
+    tbody {
+      tr {
+        td {
+          &:last-child {
+            padding: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}

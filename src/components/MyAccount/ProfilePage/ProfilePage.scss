@@ -1,0 +1,16 @@
+@use "../../../styles/variables" as v;
+
+.content {
+  display: flex;
+  padding-top: 160px;
+  padding-bottom: 160px;
+  justify-content: space-between;
+
+  .menu {
+    width: 30%;
+  }
+  .item {
+    width: 70%;
+    margin: 20px 20px 20px 70px;
+  }
+}

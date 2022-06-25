@@ -1,0 +1,20 @@
+@use "../../../styles/variables" as v;
+
+.forgotPassForm {
+  .forgot-title {
+    margin-bottom: 15px !important;
+  }
+
+  .desc {
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 160%;
+    letter-spacing: -0.0033em;
+    color: v.$grey-text-color;
+    margin-bottom: 30px;
+  }
+
+  .form-link {
+    margin-top: 20px;
+  }
+}

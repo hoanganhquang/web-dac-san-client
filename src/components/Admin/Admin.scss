@@ -1,0 +1,197 @@
+@use "../../styles/variables" as v;
+
+.admin {
+  padding-top: 50px;
+
+  .container {
+    .admin-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 0 70px;
+
+      .admin-content {
+        flex: 1;
+
+        .title {
+          font-weight: 400;
+          font-size: 1.8rem;
+          line-height: 126%;
+          letter-spacing: -0.0068em;
+          color: v.$black-text-color;
+          margin-bottom: 10px;
+        }
+
+        .addBtn {
+          font-weight: 400;
+          font-size: 0.9375rem;
+          line-height: 160%;
+          letter-spacing: -0.0033em;
+          color: v.$primary-color;
+          cursor: pointer;
+        }
+
+        table {
+          margin-top: 10px;
+          border: 1px solid v.$grey-text-color3;
+          border-radius: 10px;
+          border-spacing: 0;
+          overflow: hidden;
+
+          thead,
+          tbody tr {
+            display: table;
+            table-layout: fixed;
+          }
+
+          thead {
+            background-color: v.$primary-color1;
+            height: 50px;
+            tr {
+              th {
+                &:nth-child(1) {
+                  padding-left: 20px;
+                }
+              }
+            }
+
+            th {
+              text-align: start;
+              font-weight: 400;
+              font-size: 1rem;
+              letter-spacing: 0.3px;
+              color: v.$black-text-color1;
+            }
+          }
+
+          tbody {
+            max-height: 400px;
+            overflow-y: auto;
+            display: block;
+
+            tr {
+              height: 40px;
+              td {
+                border-bottom: 1px solid v.$grey-text-color3;
+
+                &:first-child {
+                  padding-left: 20px;
+                }
+
+                &:last-child {
+                  padding-right: 20px;
+                }
+              }
+
+              &:last-child {
+                td {
+                  border-bottom: none;
+                }
+              }
+            }
+
+            .table-func {
+              text-align: center;
+
+              svg {
+                cursor: pointer;
+                color: v.$primary-color;
+              }
+            }
+          }
+        }
+
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 9999;
+          background-color: rgba(128, 128, 128, 0.493);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.7s linear;
+          opacity: 0;
+          visibility: hidden;
+
+          .modal-box {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.5s;
+            transform: translateY(80px);
+            opacity: 0;
+
+            .modal-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 50px;
+              background-color: v.$primary-color;
+              padding: 0 15px;
+
+              .modal-title {
+                font-size: 1.3rem;
+                color: white;
+              }
+
+              svg {
+                color: white;
+                cursor: pointer;
+                font-size: 1.3rem;
+              }
+            }
+
+            .modal-body {
+              background-color: v.$white-color;
+              padding: 10px 20px;
+
+              label {
+                color: v.$black-text-color;
+              }
+
+              .input {
+                width: 100%;
+                height: 40px;
+              }
+
+              button {
+                margin-top: 20px;
+                height: 40px;
+                width: 100px;
+              }
+            }
+          }
+        }
+
+        .delModal {
+          .modal-box {
+            width: 350px;
+
+            .modal-body {
+              display: flex;
+              gap: 0 20px;
+              justify-content: center;
+
+              button {
+                margin: 10px 0;
+                width: 100px;
+                height: 40px;
+              }
+            }
+          }
+        }
+
+        .show {
+          visibility: visible;
+          opacity: 1;
+
+          .modal-box {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

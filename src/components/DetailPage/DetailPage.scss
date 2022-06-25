@@ -1,0 +1,129 @@
+@use "../../styles/variables" as v;
+
+.detail {
+  padding-top: 30px;
+
+  .detail-main {
+    .header {
+      .title-box {
+        display: flex;
+        align-items: center;
+        gap: 0 15px;
+
+        .img-box {
+          width: 64px;
+          height: 58px;
+        }
+
+        .title {
+          font-weight: 400;
+          font-size: 1.7rem;
+          line-height: 126%;
+          letter-spacing: -0.0068em;
+          color: v.$black-text-color;
+        }
+      }
+
+      .desc {
+        font-weight: 400;
+        font-size: 1.2rem;
+        line-height: 123%;
+        letter-spacing: -0.0033em;
+        color: v.$black-text-color;
+        margin-top: 30px;
+        width: 790px;
+      }
+    }
+
+    .body {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .img-box {
+        width: 790px;
+
+        img {
+          border-radius: 9px;
+        }
+      }
+
+      .product-info-card {
+        width: 300px;
+        border: 1px solid v.$grey-text-color3;
+        overflow: hidden;
+        border-radius: 10px;
+
+        .card-header {
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: v.$primary-color;
+          padding: 27px 25px;
+
+          .price-text {
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 160%;
+            letter-spacing: -0.0033em;
+            color: v.$white-color;
+          }
+
+          .price-number {
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 130%;
+            letter-spacing: -0.0058em;
+            color: v.$white-color;
+          }
+        }
+
+        .card-body {
+          background: rgba(15, 175, 233, 0.1);
+          padding: 20px 25px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px 0;
+
+          .price-detail {
+            display: flex;
+            justify-content: space-between;
+
+            input {
+              width: 50px;
+              width: 50px;
+              border: none;
+              padding-left: 5px;
+            }
+
+            p {
+              font-weight: 400;
+              font-size: 0.95rem;
+              line-height: 160%;
+              letter-spacing: -0.0033em;
+
+              &:nth-child(1) {
+                color: v.$grey-text-color;
+              }
+
+              &:nth-child(2) {
+                color: v.$black-text-color1;
+              }
+            }
+          }
+        }
+
+        .card-footer {
+          padding: 20px 25px;
+
+          button {
+            width: 100%;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+}

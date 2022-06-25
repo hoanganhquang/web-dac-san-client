@@ -1,0 +1,88 @@
+@use "variables" as v;
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.App {
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+button {
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 138%;
+}
+
+.img-box {
+  img {
+    width: 100%;
+  }
+}
+
+.primaryBtn {
+  background-color: v.$primary-color;
+  border: none;
+  color: v.$primary-color1;
+
+  &:hover {
+    box-shadow: 0 0 2px v.$primary-color;
+  }
+}
+
+.secondaryBtn {
+  background-color: v.$primary-color1;
+  border: none;
+  color: v.$primary-color;
+}
+
+.secondaryStrokeBtn {
+  background-color: v.$primary-color1;
+  border: 1px solid v.$primary-color;
+  color: v.$primary-color;
+}
+
+.input {
+  background-color: v.$white-color;
+  border: 1px solid v.$grey-text-color3;
+  border-radius: 7px;
+  padding: 17px 20px;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 138%;
+  letter-spacing: 0.3px;
+  transition: all 0.2s linear;
+
+  &:focus {
+    border-color: v.$primary-color;
+    box-shadow: 0px 5px 40px rgba(18, 21, 26, 0.05);
+  }
+
+  &--error {
+    border-color: v.$red-color;
+  }
+}
+
+main {
+  margin-top: v.$nav-height;
+}
+
+.vnd {
+  font-size: 0.625rem;
+}

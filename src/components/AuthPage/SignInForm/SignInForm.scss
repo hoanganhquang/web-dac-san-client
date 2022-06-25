@@ -1,0 +1,47 @@
+@use "../../../styles/variables" as v;
+
+.signInForm {
+  .form-footer {
+    margin-bottom: 20px;
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+
+      input[type="checkbox"] {
+        border: 1px solid v.$primary-color;
+        width: 22px;
+        height: 22px;
+        border-radius: 7px;
+        text-align: center;
+        cursor: pointer;
+
+        &::before {
+          content: "\2713";
+          font-size: 15px;
+          color: transparent;
+          display: block;
+        }
+
+        &:checked::before {
+          color: black;
+        }
+
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        -o-appearance: none;
+      }
+
+      label {
+        font-weight: 400;
+        font-size: 0.9375rem;
+        line-height: 160%;
+        letter-spacing: -0.0033em;
+        color: v.$black-text-color;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
+}

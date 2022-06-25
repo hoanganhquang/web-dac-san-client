@@ -1,0 +1,69 @@
+@use "../../styles/variables" as v;
+
+.authPage {
+  padding-top: 60px;
+  padding-bottom: 50px;
+
+  .container {
+    .authPage-main {
+      display: flex;
+      justify-content: space-between;
+
+      .form-link {
+        font-weight: 400;
+        font-size: 0.9375rem;
+        line-height: 160%;
+        letter-spacing: -0.0033em;
+        color: v.$grey-text-color1;
+        cursor: pointer;
+        display: inline-block;
+        transition: all 0.1s linear;
+
+        &:hover {
+          color: v.$primary-color;
+        }
+      }
+
+      .form {
+        h1 {
+          font-weight: 400;
+          font-size: 1.6rem;
+          line-height: 126%;
+          letter-spacing: -0.0068em;
+          color: v.$black-text-color;
+          margin-bottom: 40px;
+        }
+
+        .form-control {
+          margin-bottom: 25px;
+
+          .input-title {
+            font-weight: 600;
+            font-size: 0.75rem;
+            line-height: 175%;
+            letter-spacing: 0.0112em;
+            text-transform: uppercase;
+            color: #636363;
+            margin-bottom: 5px;
+          }
+
+          .input {
+            width: 450px;
+            height: 60px;
+          }
+        }
+        .form-footer {
+          display: flex;
+          gap: 0 20px;
+          align-items: center;
+
+          button {
+            width: 200px;
+            height: 60px;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+}
