@@ -14,7 +14,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 function Header() {
   const [headerScrollStyle, setHeaderScrollStyle] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedin, user } = useSelector((state) => state.auth);
+  const { isLoggedin } = useSelector((state) => state.auth);
   const [cartItemQuan, setCartItemQuan] = useState(0);
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -83,11 +83,11 @@ function Header() {
               <li className="item" onClick={handleNavigateProductSection}>
                 <a>Sản phẩm</a>
               </li>
-              {user.role == "Admin" && (
+              {/* {user.role == "Admin" && (
                 <li className="item" onClick={handleNavigateDashboardAdmin}>
                   <a>Quản lý</a>
                 </li>
-              )}
+              )} */}
               {isLoggedin && (
                 <li className="item" onClick={handleSignOutBtn}>
                   <a href="" style={{ color: "red" }}>

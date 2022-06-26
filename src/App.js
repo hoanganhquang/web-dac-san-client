@@ -22,52 +22,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getCurrentUser } from "./redux/authSlice";
+import { RouterConfig, routes } from "./routes/routerConfig";
 
 function App() {
-  const { isLoggedin, token, user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  // const { isLoggedin, token } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     aos.init({ duration: 1000 });
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUser(token));
-  // }, [isLoggedin]);
+  // // useEffect(() => {
+  // //   dispatch(getCurrentUser(token));
+  // // }, [isLoggedin]);
 
-  useEffect(() => {
-    if (isLoggedin) {
-      toast.success("Đã đăng nhập");
-    }
-  }, [isLoggedin]);
+  // useEffect(() => {
+  //   if (isLoggedin) {
+  //     toast.success("Đã đăng nhập");
+  //   }
+  // }, [isLoggedin]);
 
   return (
     <div className="App" id="App" style={{ overflow: "hidden" }}>
       <div className="wrapper">
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products/:id" element={<DetailPage />} />
-          {isLoggedin ? (
-            <>
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/profile-page/*" element={<ProfilePage />} />
-              {user.role === "Admin" && (
-                <Route path="/admin/*" element={<Admin />} />
-              )}
-              <Route path="/auth" element={<Navigate replace to="/" />} />
-            </>
-          ) : (
-            <>
-              <Route path="/cart" element={<Navigate replace to="/auth" />} />
-              <Route
-                path="/profile-page/*"
-                element={<Navigate replace to="/auth" />}
-              />
-              <Route path="/auth" element={<AuthPage />} />
-            </>
-          )}
-          <Route path="/*" element={<ErrorPage />} />
+          {routes.map((route, index) => {
+            let Element = <route.component />;
+
+            if (route.isLoggedin === false) {
+              Element = <AuthPage />;
+            }
+
+            if (route.restricted === false) {
+              Element = <Navigate replace to="/" />;
+            }
+
+            if (route.admin === false) {
+              Element = <ErrorPage />;
+            }
+
+            return <Route key={index} path={route.path} element={Element} />;
+          })}
         </Routes>
         <Footer />
       </div>
