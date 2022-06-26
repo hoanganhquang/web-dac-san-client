@@ -2,7 +2,6 @@
 
 .orders {
   width: 100%;
-  letter-spacing: 0.3px;
   .orders-title {
     text-align: left;
     height: 60px;
@@ -18,12 +17,6 @@
       border-collapse: collapse;
       border-radius: 10px 10px 0px 0px;
       overflow: hidden;
-      thead {
-        th {
-          font-weight: normal;
-          font-size: 1rem;
-        }
-      }
       .table-header {
         background-color: rgba(15, 175, 233, 0.1);
         height: 50px;
@@ -86,6 +79,7 @@
         font-size: 1.3rem;
       }
     }
+
   }
 }
 
@@ -108,22 +102,22 @@
       margin-top: 0 !important;
       background-color: v.$white-color;
       letter-spacing: 0.3px;
-      thead {
-        tr {
+      thead{
+        tr{
           height: 50px;
           background-color: rgba(15, 175, 233, 0.1);
-          th {
+          th{
             padding-left: 25px;
             text-align: start;
             font-weight: normal;
-            color: #33334f;
+            color:#33334f;
           }
         }
       }
-      tbody {
-        tr {
+      tbody{
+        tr{
           height: 40px;
-          td {
+          td{
             padding-left: 25px;
           }
         }

@@ -4,9 +4,9 @@ import logo from "../../assets/icons/Logo.svg";
 
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { signOut } from "../../store/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { signOut } from "../../redux/authSlice";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
@@ -14,8 +14,10 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 function Header() {
   const [headerScrollStyle, setHeaderScrollStyle] = useState(false);
   const navigate = useNavigate();
+  const { isLoggedin, user } = useSelector((state) => state.auth);
+  const [cartItemQuan, setCartItemQuan] = useState(0);
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const { token, isLogin, user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const scrollCheck = () => {
@@ -29,20 +31,20 @@ function Header() {
     };
   }, []);
 
-  // useEffect(async () => {
-  //   try {
-  //     const res = await axios.get(`${process.env.REACT_APP_API}/cart/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     if (res.data.data.products.length > 0) {
-  //       setCartItemQuan(res.data.data.products.length);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [isLogin]);
+  useEffect(async () => {
+    try {
+      const res = await axios.get(`${process.env.REACT_APP_API}/cart/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.data.data.products.length > 0) {
+        setCartItemQuan(res.data.data.products.length);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [isLoggedin]);
 
   const handleNavigateCard = () => {
     navigate("/cart");
@@ -56,16 +58,15 @@ function Header() {
     navigate("/admin");
   };
 
+  const handleSignOutBtn = () => {
+    dispatch(signOut());
+    localStorage.removeItem("token");
+  };
+
   const handleNavigateProductSection = () => {
     navigate("/", { state: { scroll: true } });
   };
 
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    dispatch(signOut());
-    navigate("/auth");
-  };
-  console.log(user);
   return (
     <header className={clsx({ scrollShow: headerScrollStyle })}>
       <div className="container">
@@ -87,8 +88,8 @@ function Header() {
                   <a>Quản lý</a>
                 </li>
               )}
-              {isLogin && (
-                <li className="item" onClick={handleLogOut}>
+              {isLoggedin && (
+                <li className="item" onClick={handleSignOutBtn}>
                   <a href="" style={{ color: "red" }}>
                     Đăng xuất
                   </a>

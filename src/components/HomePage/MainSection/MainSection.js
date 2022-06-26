@@ -17,7 +17,7 @@ function MainSection() {
 
   useEffect(async () => {
     if (location.state) {
-      window.scrollTo(0, 1045);
+      window.scrollTo(0, 1770);
     }
   }, []);
 

@@ -1,4 +1,4 @@
-import "./Orders.scss";
+import "../Orders/Orders.scss";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
@@ -18,18 +18,13 @@ const Orders = () => {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/order/notAll`, {
+      const res = await axios.get(`${process.env.REACT_APP_API}/order/all`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      if (typeof res.data.data == "object") {
-        const arr = [];
-        arr.push(res.data.data);
-        setDataOrder(arr);
-      } else {
-        setDataOrder(res.data.data);
-      }
+
+      setDataOrder(res.data.data);
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +53,7 @@ const Orders = () => {
               {dataOrderDetail.length > 0 &&
                 dataOrderDetail.map((item) => {
                   return (
-                    <tr>
+                    <tr key={item._id}>
                       <td>{item.name}</td>
                       <td>{item.price}</td>
                       <td>{item.quantity}</td>

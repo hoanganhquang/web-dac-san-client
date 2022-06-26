@@ -13,7 +13,7 @@ export default function Statistics() {
   const { token } = useSelector((state) => state.auth);
   const [dateValue, setDateValue] = useState(new Date());
   const [dataStatistics, setDataStatistics] = useState({});
-  const [dateType, setDateType] = useState();
+  const [dateType, setDateType] = useState("date");
 
   const handleChangeDate = (date) => {
     setDateValue(date);
@@ -23,7 +23,7 @@ export default function Statistics() {
     let month = dateValue.getMonth() + 1;
     let date = dateValue.getDate();
     if (month < 10) month = "0" + month;
-    if (date < 10) month = "0" + date;
+    if (date < 10) date = "0" + date;
     let dates = dateValue.getFullYear() + "-" + month + "-" + date;
 
     if (dateType == "month") {
@@ -72,7 +72,7 @@ export default function Statistics() {
     } catch (error) {
       console.log(error);
     }
-  }, [dateValue]);
+  }, [dateValue, dateType]);
 
   return (
     <div className="statistics">
@@ -86,7 +86,6 @@ export default function Statistics() {
             setDateType(e.target.value);
           }}
         >
-          <option value="">Chọn</option>
           <option value="date">Ngày</option>
           <option value="month">Tháng</option>
           <option value="year">Năm</option>

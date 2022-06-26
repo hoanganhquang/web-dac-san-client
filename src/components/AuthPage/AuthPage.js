@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./AuthPage.scss";
 import ForgotPassForm from "./ForgotPassForm/ForgotPassForm";
 import SignInForm from "./SignInForm/SignInForm";
@@ -6,6 +6,10 @@ import SignUpForm from "./SignUpForm/SignUpForm";
 
 function AuthPage() {
   const [forgotTab, setForgotTab] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleForgotTab = () => {
     setForgotTab((prev) => !prev);

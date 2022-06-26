@@ -17,9 +17,6 @@ const AccountMenu = () => {
         <NavLink className="items" to="/profile-page/account-details">
           Thông tin tài khoản
         </NavLink>
-        <NavLink className="items log-out" to="/profile-page/log-out">
-          Đăng xuất
-        </NavLink>
       </div>
     </div>
   );

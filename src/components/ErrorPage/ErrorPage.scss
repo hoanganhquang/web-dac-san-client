@@ -1,0 +1,15 @@
+.err-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 150px 0;
+
+  .err {
+    font-size: 2rem;
+
+    span {
+      font-size: 8.5rem;
+    }
+  }
+}

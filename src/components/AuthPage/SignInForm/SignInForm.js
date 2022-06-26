@@ -1,30 +1,30 @@
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signIn } from "../../../redux/authSlice";
 import "./SignInForm.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { signIn } from "../../../store/authSlice";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 function SignInForm(props) {
-  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { token, isLogin } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (isLogin) {
-      toast.success("Đăng nhập thành công");
-      navigate("/");
-    }
-  }, [isLogin]);
-  const handleLogin = () => {
-    if (userName && password) {
-      dispatch(signIn({ userName, password }));
+
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordInput = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmitForm = () => {
+    if (email.trim() === "" || password.trim() === "") {
+      toast.error("Thông tin đăng nhập không hợp lệ");
     } else {
-      toast.warning("Vui lòng không để trống thông tin");
-      return;
+      dispatch(signIn({ email, password }));
     }
   };
+
   return (
     <div className="signInForm form" data-aos="fade-right">
       <h1>Đăng nhập</h1>
@@ -36,8 +36,7 @@ function SignInForm(props) {
           name=""
           className="input"
           placeholder="example@email.com"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          onChange={(e) => handleEmailInput(e)}
         />
       </div>
 
@@ -47,13 +46,12 @@ function SignInForm(props) {
           type="password"
           name=""
           className="input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => handlePasswordInput(e)}
         />
       </div>
 
       <div className="form-footer">
-        <button className="primaryBtn" onClick={handleLogin}>
+        <button className="primaryBtn" onClick={handleSubmitForm}>
           Đăng nhập
         </button>
 

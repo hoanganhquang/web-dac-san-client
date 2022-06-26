@@ -1,71 +1,71 @@
 @use "../../../styles/variables" as v;
 
-.account-details{
-    width: 100%;
-    letter-spacing: 0.3px;
-    .account-details-title{
-        text-align: left;
+.account-details {
+  width: 100%;
+  .account-details-title {
+    text-align: left;
     height: 60px;
     .title {
-        font-size: 1.5625rem;
-        padding-bottom: 1.25rem;
+      font-size: 1.5625rem;
+      padding-bottom: 1.25rem;
+    }
+  }
+  .account-details-content {
+    .account-details-info {
+      height: 200px;
+      .info-items {
+        float: left;
+        width: 40%;
+        margin-right: 10%;
       }
     }
-    .account-details-content{    
-        .account-details-info{
-         height: 200px;
-            .info-items{
-                float: left;
-                width: 40%;
-                margin-right: 10%;               
-            }  
-        }
-        .account-details-button{
-            width: 30%;
-            display: flex;
-            justify-content: space-between;
-            .btn-account-details{
-                display: inline-block;
-                padding: 10px;
-                width: 40%;
-                margin-bottom: 20px;
-            }
-        }
-        .change-password{
-            width: 100%;
-            .change-password-title{
-                font-size: 1.25rem;
-                color: v.$black-text-color;
-                padding-bottom: 10px;
-            }
-            .change-password-input{
-                padding-bottom: 5px;
-                input{
-                    width: 90%;
-                }
-            }
-            .change-password-button{     
-                width: 30%;
-                display: flex;
-                justify-content: space-between;
-                .btn-change-pass{
-                    display: inline-block;
-                    padding: 10px;
-                    width: 40%;
-                    margin-top: 10px;
-                }
-            }
-        }
+    .account-details-button {
+      width: 30%;
+      display: flex;
+      justify-content: space-between;
+      .btn-account-details {
+        display: inline-block;
+        padding: 10px;
+        width: 40%;
+        margin-bottom: 20px;
+      }
     }
-    .info-title{
-        font-size: .75rem;
-        color: v.$grey-text-color1;
-        padding: 5px;
-        font-weight: bold;
-    }
-    .info-content{
-        input{
-            width: 100%;
+    .change-password {
+      width: 100%;
+      margin-top: 50px;
+      .change-password-title {
+        font-size: 1.25rem;
+        color: v.$black-text-color;
+        padding-bottom: 10px;
+      }
+      .change-password-input {
+        padding-bottom: 5px;
+        input {
+          width: 90%;
         }
+      }
+      .change-password-button {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        .btn-change-pass {
+          display: inline-block;
+          padding: 10px;
+          width: 40%;
+          margin-top: 10px;
+        }
+      }
     }
+  }
+  .info-title {
+    font-size: 0.75rem;
+    color: v.$grey-text-color1;
+    padding: 5px;
+    font-weight: bold;
+  }
+  .info-content {
+    input {
+      width: 100%;
+    }
+  }
 }

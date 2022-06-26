@@ -1,3 +1,11 @@
+import "./ErrorPage.scss";
+
 export default function ErrorPage() {
-  return <h1 style={{ fontSize: "200px", marginTop: "80px" }}>404</h1>;
+  return (
+    <div className="err-box">
+      <p className="err">
+        <span>404</span> <br /> Không tìm thấy trang!
+      </p>
+    </div>
+  );
 }

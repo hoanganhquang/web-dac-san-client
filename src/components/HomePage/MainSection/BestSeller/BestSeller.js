@@ -23,10 +23,8 @@ export default function BestSeller() {
     <section className="bestSeller" data-aos="fade-right">
       <div className="container">
         <div className="text-box">
-          <h1 className="title">BÁN CHẠY</h1>
-          <p className="desc">
-            Một số sản phẩm đang là lựa chọn hàng đầu của người dùng
-          </p>
+          <h1 className="title">NỔI BẬT</h1>
+          <p className="desc">Một số sản phẩm nổi bật</p>
         </div>
 
         <div className="prod-list">
