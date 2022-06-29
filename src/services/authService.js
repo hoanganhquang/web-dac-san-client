@@ -32,6 +32,5 @@ export const getInfoService = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   });
-
   return res.data.data;
 };

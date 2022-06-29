@@ -80,6 +80,7 @@ export const authSlice = createSlice({
       })
       .addCase(getInfo.fulfilled, (state, action) => {
         state.user = action.payload;
+        state.isLoggedin = true;
       })
       .addCase(getInfo.rejected, (state, action) => {
         state.user = "";
