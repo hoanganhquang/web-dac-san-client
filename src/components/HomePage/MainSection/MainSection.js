@@ -25,7 +25,7 @@ function MainSection() {
     if (region.provinceId) {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/product/province/${region.provinceId}`
+          `${process.env.REACT_APP_API}/products/q?province=${region.provinceId}`
         );
 
         setProducts(res.data.data);

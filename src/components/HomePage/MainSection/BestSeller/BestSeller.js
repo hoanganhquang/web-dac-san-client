@@ -11,7 +11,7 @@ export default function BestSeller() {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/product/`);
+      const res = await axios.get(`${process.env.REACT_APP_API}/products/`);
       let data = res.data.data.sort(() => 0.5 - Math.random());
       data = data.slice(0, 8);
       setAllProd(data);

@@ -15,7 +15,7 @@ const Cart = () => {
     setChange(true);
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/cart/`,
+        `${process.env.REACT_APP_API}/carts/`,
         {
           product: productId,
           newQuantity: parseInt(e.target.value),
@@ -36,7 +36,7 @@ const Cart = () => {
   const removeProduct = async (productId) => {
     setChange(true);
     try {
-      await axios.delete(`${process.env.REACT_APP_API}/cart/${productId}`, {
+      await axios.delete(`${process.env.REACT_APP_API}/carts/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,7 +53,7 @@ const Cart = () => {
       details: cartInfo.products,
     };
     try {
-      await axios.post(`${process.env.REACT_APP_API}/order`, data, {
+      await axios.post(`${process.env.REACT_APP_API}/orders`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -71,7 +71,7 @@ const Cart = () => {
   useEffect(async () => {
     if (!change) {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API}/cart/`, {
+        const res = await axios.get(`${process.env.REACT_APP_API}/carts/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

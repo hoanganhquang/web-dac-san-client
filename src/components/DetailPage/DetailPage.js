@@ -52,11 +52,11 @@ function DetailPage() {
   useEffect(async () => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API}/product/${param.id}`
+        `${process.env.REACT_APP_API}/products/${param.id}`
       );
 
-      setProduct(res.data.data[0]);
-      setTotalPrice(product.price);
+      setProduct(res.data.data);
+      setTotalPrice(res.data.data.price);
     } catch (error) {
       console.log(error);
     }

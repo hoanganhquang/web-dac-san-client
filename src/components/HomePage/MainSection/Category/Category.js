@@ -10,7 +10,7 @@ function Category(props) {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/region`);
+      const res = await axios.get(`${process.env.REACT_APP_API}/regions`);
 
       setRegions(res.data.data);
     } catch (error) {

@@ -14,9 +14,8 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 function Header() {
   const [headerScrollStyle, setHeaderScrollStyle] = useState(false);
   const navigate = useNavigate();
-  const { isLoggedin } = useSelector((state) => state.auth);
+  const { isLoggedin, user, token } = useSelector((state) => state.auth);
   const [cartItemQuan, setCartItemQuan] = useState(0);
-  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,20 +30,20 @@ function Header() {
     };
   }, []);
 
-  useEffect(async () => {
-    try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/cart/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (res.data.data.products.length > 0) {
-        setCartItemQuan(res.data.data.products.length);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [isLoggedin]);
+  // useEffect(async () => {
+  //   try {
+  //     const res = await axios.get(`${process.env.REACT_APP_API}/carts/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     if (res.data.data.products.length > 0) {
+  //       setCartItemQuan(res.data.data.products.length);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [isLoggedin]);
 
   const handleNavigateCard = () => {
     navigate("/cart");
@@ -83,11 +82,11 @@ function Header() {
               <li className="item" onClick={handleNavigateProductSection}>
                 <a>Sản phẩm</a>
               </li>
-              {/* {user.role == "Admin" && (
+              {user.role == "Admin" && (
                 <li className="item" onClick={handleNavigateDashboardAdmin}>
                   <a>Quản lý</a>
                 </li>
-              )} */}
+              )}
               {isLoggedin && (
                 <li className="item" onClick={handleSignOutBtn}>
                   <a href="" style={{ color: "red" }}>
