@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isLoggedin } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
@@ -25,6 +27,12 @@ function SignUpForm() {
       dispatch(signUp({ email, password }));
     }
   };
+
+  // useEffect(() => {
+  //   if (isLoggedin) {
+  //     navigate(`/`, { replace: true });
+  //   }
+  // }, [isLoggedin]);
 
   return (
     <div className="SignUpForm form" data-aos="fade-left">

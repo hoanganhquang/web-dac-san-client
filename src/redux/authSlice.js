@@ -41,6 +41,8 @@ export const getInfo = createAsyncThunk(
       return await getInfoService(curToken);
     } catch (error) {
       console.log(error);
+      localStorage.removeItem("token");
+
       return rejectWithValue("error");
     }
   }
