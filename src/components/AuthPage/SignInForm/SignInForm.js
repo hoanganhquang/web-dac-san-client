@@ -3,11 +3,16 @@ import { signIn } from "../../../redux/authSlice";
 import "./SignInForm.scss";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function SignInForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { isLoggedin } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
@@ -24,6 +29,12 @@ function SignInForm(props) {
       dispatch(signIn({ email, password }));
     }
   };
+
+  useEffect(() => {
+    if (isLoggedin) {
+      navigate(`${location.pathname}`, { replace: true });
+    }
+  }, [isLoggedin]);
 
   return (
     <div className="signInForm form" data-aos="fade-right">

@@ -4,43 +4,31 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 import { useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import {
-  Admin,
-  AuthPage,
-  DetailPage,
-  ErrorPage,
-  Footer,
-  Header,
-  HomePage,
-} from "./components";
-import ProfilePage from "./components/MyAccount/ProfilePage/ProfilePage";
-import Cart from "./components/Cart/Cart";
+import { AuthPage, ErrorPage, Footer, Header } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { getCurrentUser } from "./redux/authSlice";
-import { RouterConfig, routes } from "./routes/routerConfig";
+
+import { routes } from "./routes/routerConfig";
+import { getInfo } from "./redux/authSlice";
 
 function App() {
-  // const { isLoggedin, token } = useSelector((state) => state.auth);
-  // const dispatch = useDispatch();
+  const { isLoggedin, token, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     aos.init({ duration: 1000 });
   }, []);
 
-  // // useEffect(() => {
-  // //   dispatch(getCurrentUser(token));
-  // // }, [isLoggedin]);
-
-  // useEffect(() => {
-  //   if (isLoggedin) {
-  //     toast.success("Đã đăng nhập");
-  //   }
-  // }, [isLoggedin]);
+  useEffect(() => {
+    if (isLoggedin) {
+      dispatch(getInfo(token));
+      toast.success("Đã đăng nhập");
+    }
+  }, [isLoggedin]);
 
   return (
     <div className="App" id="App" style={{ overflow: "hidden" }}>
@@ -50,15 +38,15 @@ function App() {
           {routes.map((route, index) => {
             let Element = <route.component />;
 
-            if (route.isLoggedin === false) {
+            if (route.isLoggedin === isLoggedin) {
               Element = <AuthPage />;
             }
 
-            if (route.restricted === false) {
+            if (route.restricted === !isLoggedin) {
               Element = <Navigate replace to="/" />;
             }
 
-            if (route.admin === false) {
+            if (route.admin === !isLoggedin && !(user.role === "admin")) {
               Element = <ErrorPage />;
             }
 

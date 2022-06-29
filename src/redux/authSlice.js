@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
-  getUserInfo,
+  getInfoService,
   signInService,
   signUpService,
 } from "../services/authService";
@@ -34,28 +34,30 @@ export const signIn = createAsyncThunk(
   }
 );
 
-// export const getCurrentUser = createAsyncThunk(
-//   "auth/getCurrentUser",
-//   async (curToken, { rejectWithValue }) => {
-//     try {
-//       return await getUserInfo(curToken);
-//     } catch (error) {
-//       console.log(error);
-//       return rejectWithValue("error");
-//     }
-//   }
-// );
+export const getInfo = createAsyncThunk(
+  "auth/getInfo",
+  async (curToken, { rejectWithValue }) => {
+    try {
+      return await getInfoService(curToken);
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue("error");
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: token ? token : "",
     isLoggedin: false,
+    user: "",
   },
   reducers: {
     signOut: (state) => {
       state.token = "";
       state.isLoggedin = false;
+      state.user = "";
     },
   },
   extraReducers: (builder) => {
@@ -75,6 +77,14 @@ export const authSlice = createSlice({
       .addCase(signIn.rejected, (state, action) => {
         state.isLoggedin = false;
         state.token = "";
+      })
+      .addCase(getInfo.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(getInfo.rejected, (state, action) => {
+        state.user = "";
+        state.token = "";
+        state.isLoggedin = false;
       });
     // .addCase(getCurrentUser.fulfilled, (state, action) => {
     //   const { name, address, email, phone, role } = action.payload.data;

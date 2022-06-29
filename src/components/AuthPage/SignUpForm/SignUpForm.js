@@ -6,11 +6,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function SignUpForm() {
-  const { isLoggedin } = useSelector((state) => state.auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);

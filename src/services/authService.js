@@ -26,12 +26,12 @@ export const signOutService = () => {
   localStorage.removeItem("token");
 };
 
-// export const getUserInfo = async (token) => {
-//   const res = await axios.get(`${url}/user/curUser`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
+export const getInfoService = async (token) => {
+  const res = await axios.get(`${url}/users/info`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-//   return res.data;
-// };
+  return res.data.data;
+};
