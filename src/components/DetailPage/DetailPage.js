@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { getQuantity } from "../../redux/cartSlice";
 import "./DetailPage.scss";
 
 function DetailPage() {
@@ -12,6 +13,7 @@ function DetailPage() {
   const [quantity, setQuantity] = useState(1);
   const param = useParams();
   const { isLoggedin, token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleQuantity = (e) => {
     setQuantity(e.target.value);
@@ -38,6 +40,7 @@ function DetailPage() {
             },
           }
         );
+        dispatch(getQuantity(token));
 
         toast.success("Đã thêm vào giỏ hàng");
       } catch (error) {

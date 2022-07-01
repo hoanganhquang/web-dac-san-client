@@ -24,6 +24,8 @@ header {
         .logoBox {
           display: flex;
           align-items: center;
+          cursor: pointer;
+
           .title {
             font-weight: 700;
             font-size: 1.5rem;

@@ -10,12 +10,13 @@ import { signOut } from "../../redux/authSlice";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { getQuantity } from "../../redux/cartSlice";
 
 function Header() {
   const [headerScrollStyle, setHeaderScrollStyle] = useState(false);
   const navigate = useNavigate();
   const { isLoggedin, user, token } = useSelector((state) => state.auth);
-  const [cartItemQuan, setCartItemQuan] = useState(0);
+  const { quantity } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,20 +31,9 @@ function Header() {
     };
   }, []);
 
-  // useEffect(async () => {
-  //   try {
-  //     const res = await axios.get(`${process.env.REACT_APP_API}/carts/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     if (res.data.data.products.length > 0) {
-  //       setCartItemQuan(res.data.data.products.length);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [isLoggedin]);
+  useEffect(() => {
+    dispatch(getQuantity(token));
+  }, []);
 
   const handleNavigateCard = () => {
     navigate("/cart");
@@ -71,7 +61,12 @@ function Header() {
       <div className="container">
         <div className="header-main">
           <div className="nav">
-            <div className="img-box logoBox">
+            <div
+              className="img-box logoBox"
+              onClick={() => {
+                window.location.assign("/");
+              }}
+            >
               <img src={logo} alt="" />
               <div className="title">TFoods</div>
             </div>
@@ -102,7 +97,7 @@ function Header() {
             </p> */}
             <div className="img-box" onClick={handleNavigateCard}>
               <img src={card} alt="" />
-              {/* {isLoggedin && <div className="number">{cartItemQuan}</div>} */}
+              {isLoggedin && <div className="number">{quantity}</div>}
             </div>
             <button className="primaryBtn" onClick={handleNavigateAccount}>
               Tài khoản

@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { getQuantity } from "../../redux/cartSlice";
 import "./Cart.scss";
 
 const Cart = () => {
@@ -10,6 +11,7 @@ const Cart = () => {
   const { token } = useSelector((state) => state.auth);
   const [totalPrice, setTotalPrice] = useState();
   const [change, setChange] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChangeQuantity = async (e, productId) => {
     setChange(true);
@@ -47,6 +49,7 @@ const Cart = () => {
           },
         }
       );
+      dispatch(getQuantity(token));
     } catch (error) {
       console.log(error);
     }
