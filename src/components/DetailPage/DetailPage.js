@@ -9,7 +9,7 @@ function DetailPage() {
   // const price1 = price.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   const [product, setProduct] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const param = useParams();
   const { isLoggedin, token } = useSelector((state) => state.auth);
 
@@ -23,8 +23,9 @@ function DetailPage() {
       toast.error("Bạn cần đăng nhập");
     } else {
       try {
+        if (quantity <= 0) return toast.error("Số lượng không phù hợp!");
         await axios.post(
-          `${process.env.REACT_APP_API}/cart/`,
+          `${process.env.REACT_APP_API}/carts/`,
           {
             _id: product._id,
             name: product.name,
@@ -79,13 +80,18 @@ function DetailPage() {
 
                   <h1 className="title">{product.name}</h1>
                 </div>
-
-                <p className="desc">{product.description}</p>
               </div>
 
               <div className="body">
-                <div className="img-box">
-                  <img src={`http://localhost:3000/${product.image}`} alt="" />
+                <div className="info-box">
+                  <div className="img-box">
+                    <img
+                      src={`http://localhost:3000/${product.image}`}
+                      alt=""
+                    />
+                  </div>
+
+                  <p className="desc">{product.description}</p>
                 </div>
 
                 <div className="product-info-card">
@@ -100,7 +106,7 @@ function DetailPage() {
                       <p className="price-text">Số lượng</p>
                       <input
                         type="number"
-                        defaultValue={0}
+                        value={quantity}
                         onChange={(e) => {
                           handleQuantity(e);
                         }}

@@ -16,7 +16,7 @@ const AccountDetails = () => {
 
   const handleChangeInfo = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API}/user`, info, {
+      await axios.patch(`${process.env.REACT_APP_API}/users`, info, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,11 +32,15 @@ const AccountDetails = () => {
       return toast.error("Mật khẩu xác nhận không chính xác");
 
     try {
-      await axios.patch(`${process.env.REACT_APP_API}/user`, infoPassword, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      await axios.patch(
+        `${process.env.REACT_APP_API}/users/password`,
+        infoPassword,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success("Thay đổi thành công");
       setInfoPassword({
         curPass: "",

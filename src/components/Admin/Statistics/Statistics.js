@@ -36,7 +36,7 @@ export default function Statistics() {
 
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API}/statistics?${dateType}=${dates}`,
+        `${process.env.REACT_APP_API}/admin/statistics?${dateType}=${dates}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

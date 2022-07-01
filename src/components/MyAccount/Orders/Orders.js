@@ -18,12 +18,12 @@ const Orders = () => {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/order/all`, {
+      const res = await axios.get(`${process.env.REACT_APP_API}/orders/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      console.log(res.data.data);
       setDataOrder(res.data.data);
     } catch (error) {
       console.log(error);

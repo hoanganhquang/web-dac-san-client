@@ -23,16 +23,6 @@
           color: v.$black-text-color;
         }
       }
-
-      .desc {
-        font-weight: 400;
-        font-size: 1.2rem;
-        line-height: 123%;
-        letter-spacing: -0.0033em;
-        color: v.$black-text-color;
-        margin-top: 30px;
-        width: 790px;
-      }
     }
 
     .body {
@@ -40,12 +30,28 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 0 90px;
 
-      .img-box {
-        width: 790px;
+      .info-box {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+        gap: 0 20px;
 
-        img {
-          border-radius: 9px;
+        .img-box {
+          img {
+            border-radius: 9px;
+          }
+        }
+
+        .desc {
+          font-weight: 400;
+          font-size: 1.2rem;
+          line-height: 123%;
+          letter-spacing: -0.0033em;
+          color: v.$black-text-color;
+          width: 790px;
+          text-align: justify;
         }
       }
 

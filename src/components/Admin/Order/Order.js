@@ -19,11 +19,12 @@ export default function Order() {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/order`, {
+      const res = await axios.get(`${process.env.REACT_APP_API}/orders`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(res.data.data);
       setDataOrder(res.data.data);
     } catch (error) {
       console.log(error);
@@ -56,7 +57,7 @@ export default function Order() {
                 <tr key={item._id}>
                   <td>{new Date(item.orderDate).toLocaleDateString("vi")}</td>
                   <td>{item.total}</td>
-                  <td>{item.userDetail[0].name}</td>
+                  <td>{item.userDetails[0].name}</td>
                   <td>
                     <button
                       className="secondaryBtn"

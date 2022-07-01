@@ -48,7 +48,7 @@ export default function Product() {
   const handleFetchProducts = async (e) => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API}/product/province/${e.target.value}`
+        `${process.env.REACT_APP_API}/products/q?province=${e.target.value}`
       );
       setProvinceId(e.target.value);
       setProducts(res.data.data);
@@ -59,7 +59,7 @@ export default function Product() {
 
   useEffect(async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API}/region`);
+      const res = await axios.get(`${process.env.REACT_APP_API}/regions`);
 
       setRegions(res.data.data);
     } catch (error) {
@@ -71,7 +71,7 @@ export default function Product() {
     if (refresh) {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API}/product/province/${provinceId}`
+          `${process.env.REACT_APP_API}/products/q?province=${provinceId}`
         );
         setProducts(res.data.data);
         setRefresh(false);

@@ -43,11 +43,14 @@ function App() {
               Element = <AuthPage />;
             }
 
-            if (route.restricted === !isLoggedin) {
+            if (route.restricted === isLoggedin) {
               Element = <Navigate replace to="/" />;
             }
 
-            if (route.admin === !isLoggedin && !(user.role === "admin")) {
+            if (
+              route.admin === isLoggedin &&
+              user?.role?.toLowerCase() !== "admin"
+            ) {
               Element = <ErrorPage />;
             }
 

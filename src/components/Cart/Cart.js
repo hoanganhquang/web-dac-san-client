@@ -15,7 +15,7 @@ const Cart = () => {
     setChange(true);
     try {
       await axios.patch(
-        `${process.env.REACT_APP_API}/carts/`,
+        `${process.env.REACT_APP_API}/carts/update`,
         {
           product: productId,
           newQuantity: parseInt(e.target.value),
@@ -36,11 +36,17 @@ const Cart = () => {
   const removeProduct = async (productId) => {
     setChange(true);
     try {
-      await axios.delete(`${process.env.REACT_APP_API}/carts/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.patch(
+        `${process.env.REACT_APP_API}/carts/remove`,
+        {
+          product: productId,
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -85,6 +91,8 @@ const Cart = () => {
 
             return total;
           });
+        } else {
+          setTotalPrice(0);
         }
       } catch (error) {
         console.log(error);
