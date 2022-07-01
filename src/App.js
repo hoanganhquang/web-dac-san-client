@@ -47,11 +47,10 @@ function App() {
               Element = <Navigate replace to="/" />;
             }
 
-            if (
-              route.admin === isLoggedin &&
-              user?.role?.toLowerCase() !== "admin"
-            ) {
-              Element = <ErrorPage />;
+            if (route?.admin == false) {
+              if (user.role.toLowerCase() !== "admin") {
+                Element = <ErrorPage />;
+              }
             }
 
             return <Route key={index} path={route.path} element={Element} />;

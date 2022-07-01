@@ -32,7 +32,13 @@ function Category(props) {
                   className="category-item"
                   key={region._id}
                   onClick={(e) => {
-                    e.currentTarget.classList.toggle("active");
+                    if (
+                      e.target.classList.contains("category-item") ||
+                      e.target.classList.contains("text-box") ||
+                      e.target.getAttribute("fill") == "currentColor"
+                    ) {
+                      e.currentTarget.classList.toggle("active");
+                    }
                   }}
                 >
                   <div className="text-box">
