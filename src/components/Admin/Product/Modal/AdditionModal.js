@@ -11,7 +11,7 @@ export default function AdditionModal(props) {
     const form = new FormData(e.target);
     form.append("province", props.provinceId);
     try {
-      await axios.post(`${process.env.REACT_APP_API}/product`, form, {
+      await axios.post(`${process.env.REACT_APP_API}/products`, form, {
         headers: {
           "content-type": "multipart/form-data",
           Authorization: `Bearer ${props.token}`,

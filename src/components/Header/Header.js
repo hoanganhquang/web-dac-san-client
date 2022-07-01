@@ -32,8 +32,10 @@ function Header() {
   }, []);
 
   useEffect(() => {
-    dispatch(getQuantity(token));
-  }, []);
+    if (isLoggedin) {
+      dispatch(getQuantity(token));
+    }
+  }, [isLoggedin]);
 
   const handleNavigateCard = () => {
     navigate("/cart");

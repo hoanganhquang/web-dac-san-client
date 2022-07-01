@@ -9,15 +9,19 @@ export default function EditionModal(props) {
     e.preventDefault();
 
     const form = new FormData(e.target);
-    form.append("_id", props.dataEditForm._id);
+    // form.append("_id", props.dataEditForm._id);
 
     try {
-      await axios.patch(`${process.env.REACT_APP_API}/product`, form, {
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${props.token}`,
-        },
-      });
+      await axios.patch(
+        `${process.env.REACT_APP_API}/products/${props.dataEditForm._id}`,
+        form,
+        {
+          headers: {
+            "content-type": "multipart/form-data",
+            Authorization: `Bearer ${props.token}`,
+          },
+        }
+      );
       toast.success("Cập nhật thành công");
       props.setRefresh(true);
       props.handleShowEditModal();

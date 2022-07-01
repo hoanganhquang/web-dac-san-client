@@ -48,7 +48,7 @@ function App() {
             }
 
             if (route?.admin == false) {
-              if (user.role.toLowerCase() !== "admin") {
+              if (user?.role?.toLowerCase() !== "admin") {
                 Element = <ErrorPage />;
               }
             }

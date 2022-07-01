@@ -8,7 +8,7 @@ export default function DeletionModal(props) {
   const handleDeleteProduct = async () => {
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API}/product/${props.idProductDelete}`,
+        `${process.env.REACT_APP_API}/products/${props.idProductDelete}`,
         {
           headers: {
             Authorization: `Bearer ${props.token}`,

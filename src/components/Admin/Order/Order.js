@@ -24,7 +24,7 @@ export default function Order() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res.data.data);
+
       setDataOrder(res.data.data);
     } catch (error) {
       console.log(error);
