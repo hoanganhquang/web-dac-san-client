@@ -18,16 +18,6 @@ function Category(props) {
     }
   }, []);
 
-  useEffect(() => {
-    const categoryItems = document.querySelectorAll(".text-box");
-
-    categoryItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        item.parentElement.classList.toggle("active");
-      });
-    });
-  });
-
   return (
     <div className="category" data-aos="fade-right">
       <div className="category-box">
@@ -38,7 +28,13 @@ function Category(props) {
           <div className="category-list">
             {regions.map((region) => {
               return (
-                <div className="category-item" key={region._id}>
+                <div
+                  className="category-item"
+                  key={region._id}
+                  onClick={(e) => {
+                    e.currentTarget.classList.toggle("active");
+                  }}
+                >
                   <div className="text-box">
                     {region.name}
                     <FontAwesomeIcon icon={faCaretRight} />

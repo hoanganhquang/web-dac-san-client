@@ -8,7 +8,11 @@ import BestSeller from "./BestSeller/BestSeller";
 
 function MainSection() {
   const [products, setProducts] = useState([]);
-  const [region, setRegion] = useState({});
+  const [region, setRegion] = useState({
+    provinceId: "626220f72933d44ee1a0175e",
+    provinceName: "Hà Nội",
+    region: "Miền Bắc",
+  });
   const location = useLocation();
 
   const handleSetProvince = async (provinceId, provinceName, region) => {

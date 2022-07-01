@@ -38,19 +38,16 @@ function App() {
         <Routes>
           {routes.map((route, index) => {
             let Element = <route.component />;
-            console.log(isLoggedin);
+
             if (route.isLoggedin === isLoggedin) {
               Element = <AuthPage />;
-              console.log("check");
             }
 
             if (route.restricted === !isLoggedin) {
               Element = <Navigate replace to="/" />;
-              console.log("check");
             }
 
             if (route.admin === !isLoggedin && !(user.role === "admin")) {
-              console.log("check");
               Element = <ErrorPage />;
             }
 
