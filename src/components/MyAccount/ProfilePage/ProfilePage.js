@@ -5,8 +5,11 @@ import Dashboard from "../Dashboard/Dashboard";
 import Orders from "../Orders/Orders";
 import AccountDetails from "../AccountDetails/AccountDetails";
 import { useEffect } from "react";
+import { useSelector } from "react-redux/es/exports";
 
 const ProfilePage = () => {
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -20,7 +23,9 @@ const ProfilePage = () => {
         <div className="item">
           <Routes>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="orders" element={<Orders />} />
+            {user?.role?.toLowerCase() !== "admin" && (
+              <Route path="orders" element={<Orders />} />
+            )}
             <Route path="account-details" element={<AccountDetails />} />
           </Routes>
         </div>

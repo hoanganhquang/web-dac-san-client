@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 import "./SideBar.scss";
 
 export default function SideBar() {
@@ -26,6 +25,7 @@ export default function SideBar() {
             Loại sản phẩm
           </NavLink>
         </li> */}
+
         <li>
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "")}

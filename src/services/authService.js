@@ -22,10 +22,6 @@ export const signUpService = async (data) => {
   return res.data.access_token;
 };
 
-export const signOutService = () => {
-  localStorage.removeItem("token");
-};
-
 export const getInfoService = async (token) => {
   const res = await axios.get(`${url}/users/info`, {
     headers: {

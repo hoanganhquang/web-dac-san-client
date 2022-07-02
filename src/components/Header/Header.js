@@ -4,7 +4,7 @@ import logo from "../../assets/icons/Logo.svg";
 
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../redux/authSlice";
 import axios from "axios";
@@ -18,6 +18,7 @@ function Header() {
   const { isLoggedin, user, token } = useSelector((state) => state.auth);
   const { quantity } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     const scrollCheck = () => {
@@ -55,7 +56,11 @@ function Header() {
   };
 
   const handleNavigateProductSection = () => {
-    navigate("/", { state: { scroll: true } });
+    if (location.pathname == "/") {
+      window.scrollTo(0, 2470);
+    } else {
+      navigate("/", { state: { scroll: true } });
+    }
   };
 
   return (
